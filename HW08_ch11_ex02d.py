@@ -28,12 +28,21 @@ def invert_dict_old(d):
 
 
 def invert_dict_new(d):
-    return {val: key for key, val in d.items()}
+    inverse = dict()
+    for key, val in d.items():
+        if val not in inverse:
+            inverse[val] = [key]
+        else:
+            inverse[val].append(key)
+    return inverse
 
 
 def print_hist_newest(d):
-    for n in range(0,max(k for k in d.keys())):
-        #print(str(n) + ": " + str(d[n]))
+    for n in range(0, max(k+1 for k in d)):
+        if n in d:
+            print(str(n) + ": " + str(d[n]))
+        else:
+            print(str(n) + ":")
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
@@ -44,7 +53,6 @@ def histogram_new(s):
     for c in s:
         d[c] = 1 + d.get(c, 0)
     return d
-
 
 def get_pledge_list():
     """ Opens pledge.txt and converts to a list, each item is a word in
@@ -60,7 +68,6 @@ def get_pledge_list():
 def main():  # DO NOT CHANGE BELOW
     pledge_histogram = histogram_new(get_pledge_list())
     pledge_invert = invert_dict_new(pledge_histogram)
-    print(pledge_invert)
     print_hist_newest(pledge_invert)
 
 if __name__ == '__main__':
