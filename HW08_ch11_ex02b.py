@@ -22,13 +22,28 @@ def print_hist_old(h):
 
 
 def print_hist_new(h):
-    pass
-
+    hist_list = list(h.keys())
+    hist_list.sort()
+    for key in hist_list:
+    	print(key + ': ' + str(h[key]))
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c] = 1 + d.get(c, 0)
+    return d
 
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in
+    the order it appears in the original file. returns the list.
+    """
+    with open('pledge.txt', 'r') as f:
+        pledge_list = f.read().split()
+    return pledge_list
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
@@ -37,7 +52,9 @@ def main():
     """ Calls print_hist_new with the appropriate arguments to print the
     histogram of pledge.txt.
     """
-    pass
+    print('Pledge Histogram: ')
+    print_hist_new(histogram_new(get_pledge_list()))
+    
 
 if __name__ == '__main__':
     main()

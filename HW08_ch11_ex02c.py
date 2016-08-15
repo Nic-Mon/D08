@@ -20,13 +20,32 @@ def reverse_lookup_old(d, v):
 
 
 def reverse_lookup_new(d, v):
-    pass
+    key_list = []
+    for k in d:
+    	if str(d[k]) == v:
+    		key_list.append(k)
+    return key_list
 
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c] = 1 + d.get(c, 0)
+    return d
 
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in
+    the order it appears in the original file. returns the list.
+    """
+    with open('pledge.txt', 'r') as f:
+        pledge_list = f.read().split()
+    return pledge_list
+
+pledge_histogram = histogram_new(get_pledge_list())
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
