@@ -30,10 +30,7 @@ def invert_dict_old(d):
 def invert_dict_new(d):
     inverse = dict()
     for key, val in d.items():
-        if val not in inverse:
-            inverse[val] = [key]
-        else:
-            inverse[val].append(key)
+        inverse.setdefault(val, []).append(key)
     return inverse
 
 

@@ -21,9 +21,9 @@ def reverse_lookup_old(d, v):
 
 def reverse_lookup_new(d, v):
     key_list = []
-    for k in d:
-    	if str(d[k]) == v:
-    		key_list.append(k)
+    for key in d:
+    	if str(d[key]) == v:
+    		key_list.append(key)
     return key_list
 
 
